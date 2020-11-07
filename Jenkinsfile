@@ -12,17 +12,16 @@ pipeline {
             choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
           }
         }
-        parameters {
-           string(name: 'branch', value: checkout([
-            $class: 'GitSCM',
-            branches: [[name: 'origin/test']],
-            extensions: [[$class: 'WipeWorkspace']],
-            userRemoteConfigs: [[url: 'git@bitbucket.org:NAVFREG/jenkinsfile-tests.git']],
-            doGenerateSubmoduleConfigurations: false
-          ]))
-        }
-
         steps {
+          parameters {
+            string(name: 'branch', value: checkout([
+              $class: 'GitSCM',
+              branches: [[name: 'origin/test']],
+              extensions: [[$class: 'WipeWorkspace']],
+              userRemoteConfigs: [[url: 'git@bitbucket.org:NAVFREG/jenkinsfile-tests.git']],
+              doGenerateSubmoduleConfigurations: false
+            ]))
+          }
             sh 'chmod +x ./jenkins/scripts/deliver-for-development.sh'
             sh 'echo $branch'
             sh './jenkins/scripts/deliver-for-development.sh $CHOICE'
