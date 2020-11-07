@@ -19,7 +19,7 @@ pipeline {
             extensions: [[$class: 'WipeWorkspace']],
             userRemoteConfigs: [[url: 'git@bitbucket.org:NAVFREG/jenkinsfile-tests.git']],
             doGenerateSubmoduleConfigurations: false
-          ])
+          ]))
         }
 
         steps {
