@@ -8,26 +8,12 @@ pipeline {
         input  {
           message "Select directories to be added"
           parameters {
-            choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+            string(name: 'Commit_Id', defaultValue: env.GIT_COMMIT, description: 'Latest Commit id needed to push changes to different branches')
+            choice(name: 'dir', choices:['dir1', 'dir2', 'dir3'], description: 'Directories to be committed to differnt branch')
           }
         }
         steps {
-            script{
-                    // Checkout the repository and save the resulting metadata
-              def scmVars = checkout([
-                $class: 'GitSCM',
-                ...
-              ])
-
-              // Display the variable using scmVars
-              echo "scmVars.GIT_COMMIT"
-              echo "${scmVars.GIT_COMMIT}"
-
-              // Displaying the variables saving it as environment variable
-              GIT_COMMIT = scmVars.GIT_COMMIT
-              echo "env.GIT_COMMIT"
-              echo "${env.GIT_COMMIT}"
-            }
+            sh './jenkins/scripts/deliver-for-development.sh $Commit_Id $dir'
         }
     }
 

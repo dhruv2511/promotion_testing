@@ -2,4 +2,4 @@
 
 # My first script
 
-echo "Latest commit id is: ${env.GIT_COMMIT}"
+echo "Latest commit id is: ${Commit_Id} ${dir}"
