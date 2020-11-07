@@ -7,9 +7,14 @@ pipeline {
             branch 'development'
         }
         steps {
+            input {
+              parameters {
+                string(name: 'Directory', description: 'Which directories need to be commited?')
+              } 
+            }
             sh 'chmod +x ./jenkins/scripts/deliver-for-development.sh'
             sh './jenkins/scripts/deliver-for-development.sh'
-            input message: 'Finished using the web site? (Click "Proceed" to continue)'
+
         }
     }
 
