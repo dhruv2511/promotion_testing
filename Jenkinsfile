@@ -16,13 +16,13 @@ pipeline {
             BRANCH = checkout([
               $class: 'GitSCM',
               branches: [[name: 'origin/test']],
-              extensions: [$class: 'WipeWorkspace']],
+              extensions: [[$class: 'WipeWorkspace']],
               userRemoteConfigs: [[url: 'https://github.com/dhruv2511/promotion_testing.git']],
               doGenerateSubmoduleConfigurations: false
             ])
             sh 'chmod +x ./jenkins/scripts/deliver-for-development.sh'
             sh './jenkins/scripts/deliver-for-development.sh $CHOICE'
-
+        
         }
     }
 
