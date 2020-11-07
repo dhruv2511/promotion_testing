@@ -13,7 +13,7 @@ pipeline {
           }
         }
         steps {
-            BRANCH = checkout([
+            $BRANCH = checkout([
               $class: 'GitSCM',
               branches: [[name: 'origin/test']],
               extensions: [[$class: 'WipeWorkspace']],
