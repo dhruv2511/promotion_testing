@@ -12,11 +12,9 @@ pipeline {
           }
         }
         steps {
-            checkout([
-              $class: 'GitSCM',
-              branches: [[name: 'test']],
-              userRemoteConfigs: scm.userRemoteConfigs
-            ])
+            sh '$latest_commit_id = git rev-parse HEAD'
+            sh 'echo Latest commit id is: ${latest_commit_id}'
+
         }
     }
 
