@@ -14,7 +14,7 @@ pipeline {
         steps {
             checkout([
               $class: 'GitSCM',
-              branches: [[name: 'remote/origin/test']],
+              branches: [[name: 'test']],
               userRemoteConfigs: scm.userRemoteConfigs
             ])
         }
