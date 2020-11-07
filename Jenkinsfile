@@ -12,10 +12,10 @@ pipeline {
           }
         }
         steps {
-            checkout scm
-            sh 'chmod +x ./jenkins/scripts/deliver-for-development.sh'
-            sh 'echo ${params.branch}'
-            sh './jenkins/scripts/deliver-for-development.sh $CHOICE'
+            checkout([
+              $class: 'GitSCM',
+              branches: [[name: 'origin/test']]
+            ])
         }
     }
 
