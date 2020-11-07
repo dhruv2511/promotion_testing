@@ -3,5 +3,6 @@
 # My first script
 
 echo "Checking out test branch"
-echo "Deployment dir ${deployment.Directory}"
+read deployment
+echo "Deployment dir ${deployment}"
 git checkout test
