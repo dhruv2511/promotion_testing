@@ -6,13 +6,14 @@ pipeline {
         when {
             branch 'development'
         }
-        steps {
-            input  {
+        input  {
                 message "Select directories to be added"
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
                 }
-            }
+        }
+        steps {
+
             sh 'chmod +x ./jenkins/scripts/deliver-for-development.sh'
             sh './jenkins/scripts/deliver-for-development.sh'
 
