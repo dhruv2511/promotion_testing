@@ -3,6 +3,5 @@
 # My first script
 
 echo "Checking out test branch"
-read deployment
+echo $CHOICES
 echo "Deployment dir ${deployment}"
-git checkout test
