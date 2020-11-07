@@ -2,4 +2,6 @@
 
 # My first script
 
-echo "Hello World!"
+echo "Checking out test branch"
+echo "Deployment dir ${deployment.Directory}"
+git checkout test
