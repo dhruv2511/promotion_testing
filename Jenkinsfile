@@ -12,7 +12,7 @@ pipeline {
           }
         }
         steps {
-            sh 'git log -n 1 --pretty=format:'%h''
+            sh 'git log -n 1'
             sh './jenkins/scripts/deliver-for-development.sh'
 
         }
