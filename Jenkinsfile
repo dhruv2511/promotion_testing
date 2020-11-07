@@ -12,7 +12,7 @@ pipeline {
           }
         }
         steps {
-            sh 'git log -n 1'
+            echo "GIT_COMMIT is ${env.GIT_COMMIT}"
             sh './jenkins/scripts/deliver-for-development.sh'
 
         }
