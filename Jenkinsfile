@@ -14,7 +14,7 @@ pipeline {
         }
         steps {
           parameters {
-            string(name: 'branch', value: checkout([
+            string(name: 'branch', defaultValue: checkout([
               $class: 'GitSCM',
               branches: [[name: 'origin/test']],
               extensions: [[$class: 'WipeWorkspace']],
