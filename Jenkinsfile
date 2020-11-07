@@ -12,8 +12,7 @@ pipeline {
           }
         }
         steps {
-            sh '$latest_commit_id = git rev-parse HEAD'
-            sh 'echo Latest commit id is: ${latest_commit_id}'
+            sh './jenkins/scripts/deliver-for-development.sh'
 
         }
     }

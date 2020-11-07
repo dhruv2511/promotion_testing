@@ -2,6 +2,6 @@
 
 # My first script
 
-echo "Checking out test branch"
-echo ${CHOICE}
-git branch
+git rev-parse HEAD > curr_com.txt
+set /p curr_com=<curr_com.txt
+echo "Latest commit id is: ${curr_com}"
