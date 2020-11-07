@@ -8,6 +8,7 @@ pipeline {
         }
         steps {
             input {
+              message: "Select directories needed"
               parameters {
                 string(name: 'Directory', description: 'Which directories need to be commited?')
               } 
