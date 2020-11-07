@@ -13,7 +13,7 @@ pipeline {
         }
         steps {
             echo "GIT_COMMIT is ${env.GIT_COMMIT}"
-            sh './jenkins/scripts/deliver-for-development.sh ${env.GIT_COMMIT}'
+            sh './jenkins/scripts/deliver-for-development.sh $env.GIT_COMMIT'
 
         }
     }
