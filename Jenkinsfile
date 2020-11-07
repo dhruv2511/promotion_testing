@@ -7,11 +7,11 @@ pipeline {
             branch 'development'
         }
         steps {
-            input {
-              message: "Select directories needed"
-              parameters {
-                string(name: 'Directory', description: 'Which directories need to be commited?')
-              } 
+            input  {
+                message "Select directories to be added"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
             }
             sh 'chmod +x ./jenkins/scripts/deliver-for-development.sh'
             sh './jenkins/scripts/deliver-for-development.sh'
