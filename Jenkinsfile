@@ -1,6 +1,14 @@
 pipeline {
   agent any
-
+  parameters {
+    string(name: 'branch', defaultValue: checkout([
+      $class: 'GitSCM',
+      branches: [[name: 'origin/test']],
+      extensions: [[$class: 'WipeWorkspace']],
+      userRemoteConfigs: [[url: 'git@bitbucket.org:NAVFREG/jenkinsfile-tests.git']],
+      doGenerateSubmoduleConfigurations: false
+    ]), description: "Test branch to be checked out")
+  }
   stages {
     stage('Deliver for development') {
         when {
@@ -13,17 +21,8 @@ pipeline {
           }
         }
         steps {
-          parameters {
-            string(name: 'branch', defaultValue: checkout([
-              $class: 'GitSCM',
-              branches: [[name: 'origin/test']],
-              extensions: [[$class: 'WipeWorkspace']],
-              userRemoteConfigs: [[url: 'git@bitbucket.org:NAVFREG/jenkinsfile-tests.git']],
-              doGenerateSubmoduleConfigurations: false
-            ]))
-          }
             sh 'chmod +x ./jenkins/scripts/deliver-for-development.sh'
-            sh 'echo $branch'
+            sh 'echo ${params.branch}'
             sh './jenkins/scripts/deliver-for-development.sh $CHOICE'
         }
     }
