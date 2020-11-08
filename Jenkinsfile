@@ -13,7 +13,7 @@ pipeline {
           }
         }
         steps {
-            sh 'git checkout test'
+            sh 'git checkout remote/origin/test'
             sh 'git checkout development -- ${dir}'
             sh 'git add ${dir}'
             sh 'git commit -m "Promoting ${dir} to Pre_Prod branch"'
