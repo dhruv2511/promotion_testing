@@ -15,9 +15,9 @@ pipeline {
         steps {
             dir('/tmp/JobDir') {
               sh 'echo $PWD'
+              sh './jenkins/scripts/deliver-for-development.sh $Commit_Id $dir'
             }
-            sh 'cp -r ./${dir} private/tmp/JobDir'
-            sh './jenkins/scripts/deliver-for-development.sh $Commit_Id $dir'
+            
         }
     }
 
