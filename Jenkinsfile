@@ -13,10 +13,11 @@ pipeline {
           }
         }
         steps {
-            dir('/tmp/JobDir') {
-              sh 'echo $PWD'
-              sh './jenkins/scripts/deliver-for-development.sh $Commit_Id $dir'
-            }
+            sh 'git checkout test'
+            sh 'git checkout development -- ${dir}'
+            sh 'git add ${dir}'
+            sh 'git commit -m "Promoting ${dir} to Pre_Prod branch"'
+            sh 'git push origin test'
             
         }
     }
