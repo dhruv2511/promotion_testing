@@ -2,9 +2,6 @@ pipeline {
   agent any
   stages {
     stage('Deliver for development') {
-        when {
-            branch 'development'
-        }
         input  {
           message "Select directories to be added"
           parameters {

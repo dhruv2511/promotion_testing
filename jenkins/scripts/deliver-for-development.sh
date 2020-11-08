@@ -6,3 +6,5 @@ echo "Latest commit id is: ${Commit_Id} ${dir}"
 
 git branch
 
+git checkout test
+
