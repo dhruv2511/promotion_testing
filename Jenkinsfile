@@ -13,12 +13,7 @@ pipeline {
           }
         }
         steps {
-            sh 'git checkout remote/origin/test'
-            sh 'git checkout development -- ${dir}'
-            sh 'git add ${dir}'
-            sh 'git commit -m "Promoting ${dir} to Pre_Prod branch"'
-            sh 'git push origin test'
-            
+            sh './jenkins/scripts/deliver-for-development.sh'
         }
     }
 
