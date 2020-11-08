@@ -8,3 +8,11 @@ git branch
 
 git checkout test
 
+git checkout development -- ${dir}
+
+git add .
+
+git commit -m "Promoting changes from development to test"
+
+git push origin test
+
